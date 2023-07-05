@@ -2,7 +2,7 @@
 # More info at https://www.odoo.com/documentation/master/reference/module.html
 
 {
-    "name": "Real Estate",
+    "name": "Real Estate from tutorial",
     "depends": [
         "base"],
     'installable': True,
