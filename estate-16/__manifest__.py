@@ -7,4 +7,9 @@
         "base"],
     'installable': True,
     'application': True,
+# data files always loaded at installation
+    'data': 
+    [    'security/ir.model.access.csv'
+    ],
+
 }
