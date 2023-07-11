@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+
+        <!-- Main Menu -->
+        <menuitem id="project_management_main_menu" name="Project Management" sequence="10"/>
+
+        <!-- Department Menu -->
+        <menuitem id="project_management_department_menu" name="Departments" action="project_management_department_action" parent="project_management_main_menu"/>
+
+        <!-- Employee Menu -->
+        <menuitem id="project_management_employee_menu" name="Employees" action="project_management_employee_action" parent="project_management_main_menu"/>
+
+        <!-- Project Menu -->
+        <menuitem id="project_management_project_menu" name="Projects" action="project_management_project_action" parent="project_management_main_menu"/>
+
+        <!-- Task Menu -->
+        <menuitem id="project_management_task_menu" name="Tasks" action="project_management_task_action" parent="project_management_main_menu"/>
+
+        <!-- Product Menu -->
+        <menuitem id="project_management_product_menu" name="Products" action="project_management_product_action" parent="project_management_main_menu"/>
+
+        <!-- Competency Menu -->
+        <menuitem id="project_management_competency_menu" name="Competencies" action="project_management_competency_action" parent="project_management_main_menu"/>
+
+        <!-- Calendar Menu -->
+        <menuitem id="project_management_calendar_menu" name="Calendars" action="project_management_calendar_action" parent="project_management_main_menu"/>
+    </data>
+</odoo>

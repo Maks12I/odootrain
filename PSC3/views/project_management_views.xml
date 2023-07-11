@@ -1,0 +1,445 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+  <!-- Main Menu -->
+        <menuitem id="project_management_main_menu" name="Project Management" sequence="10"/>
+
+        <!-- Department Form View -->
+        <record id="project_management_department_form_view" model="ir.ui.view">
+            <field name="name">project.management.department.form.view</field>
+            <field name="model">project.management.department</field>
+            <field name="arch" type="xml">
+                <form string="Department">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="description"/>
+                                <field name="manager_id"/>
+                            </group>
+                            <group>
+                                <field name="employee_ids" widget="many2many_tags"/>
+                                <field name="project_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Department Tree View -->
+        <record id="project_management_department_tree_view" model="ir.ui.view">
+            <field name="name">project.management.department.tree.view</field>
+            <field name="model">project.management.department</field>
+            <field name="arch" type="xml">
+                <tree string="Departments">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="manager_id"/>
+                    <field name="employee_ids" widget="many2many_tags"/>
+                    <field name="project_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Department Action -->
+        <record id="project_management_department_action" model="ir.actions.act_window">
+            <field name="name">Departments</field>
+            <field name="res_model">project.management.department</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new department
+                </p><p>
+                    A department is a unit of your organization that can have its own projects, tasks and employees.
+                </p>
+            </field>
+        </record>
+
+        <!-- Department Menu -->
+        <menuitem id="project_management_department_menu" name="Departments" action="project_management_department_action" parent="project_management_main_menu"/>
+
+<!-- Employee Form View -->
+        <record id="project_management_employee_form_view" model="ir.ui.view">
+            <field name="name">project.management.employee.form.view</field>
+            <field name="model">project.management.employee</field>
+            <field name="arch" type="xml">
+                <form string="Employee">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="code"/>
+                                <field name="department_id"/>
+                                <field name="position"/>
+                                <field name="competency_ids" widget="many2many_tags"/>
+                                <field name="availability_calendar_id"/>
+                            </group>
+                            <group>
+                                <field name="hour_rate"/>
+                                <field name="user_id"/>
+                                <field name="task_ids" widget="many2many_tags"/>
+                                <field name="product_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Employee Tree View -->
+        <record id="project_management_employee_tree_view" model="ir.ui.view">
+            <field name="name">project.management.employee.tree.view</field>
+            <field name="model">project.management.employee</field>
+            <field name="arch" type="xml">
+                <tree string="Employees">
+                    <field name="name"/>
+                    <field name="code"/>
+                    <field name="department_id"/>
+                    <field name="position"/>
+                    <field name="competency_ids" widget="many2many_tags"/>
+                    <field name="availability_calendar_id"/>
+                    <field name="hour_rate"/>
+                    <field name="user_id"/>
+                    <field name="task_ids" widget="many2many_tags"/>
+                    <field name="product_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Employee Action -->
+        <record id="project_management_employee_action" model="ir.actions.act_window">
+            <field name="name">Employees</field>
+            <field name="res_model">project.management.employee</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new employee
+                </p><p>
+                    An employee is a person who works in your organization and can be assigned to tasks and projects.
+                </p>
+            </field>
+        </record>
+
+        <!-- Employee Menu -->
+        <menuitem id="project_management_employee_menu" name="Employees" action="project_management_employee_action" parent="project_management_main_menu"/>
+
+ <!-- Project Form View -->
+        <record id="project_management_project_form_view" model="ir.ui.view">
+            <field name="name">project.management.project.form.view</field>
+            <field name="model">project.management.project</field>
+            <field name="arch" type="xml">
+                <form string="Project">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="description"/>
+                                <field name="task_ids" widget="many2many_tags"/>
+                                <field name="employee_ids" widget="many2many_tags"/>
+                                <field name="max_budget"/>
+                                <field name="status"/>
+                            </group>
+                            <group>
+                                <field name="planned_cost"/>
+                                <field name="actual_cost"/>
+                                <field name="department_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Project Tree View -->
+        <record id="project_management_project_tree_view" model="ir.ui.view">
+            <field name="name">project.management.project.tree.view</field>
+            <field name="model">project.management.project</field>
+            <field name="arch" type="xml">
+                <tree string="Projects">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="task_ids" widget="many2many_tags"/>
+                    <field name="employee_ids" widget="many2many_tags"/>
+                    <field name="max_budget"/>
+                    <field name="status"/>
+                    <field name="planned_cost"/>
+                    <field name="actual_cost"/>
+                    <field name="department_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Project Action -->
+        <record id="project_management_project_action" model="ir.actions.act_window">
+            <field name="name">Projects</field>
+            <field name="res_model">project.management.project</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new project
+                </p><p>
+                    A project is a set of tasks that aim to achieve a specific goal within a budget and a deadline.
+                </p>
+            </field>
+        </record>
+
+        <!-- Project Menu -->
+        <menuitem id="project_management_project_menu" name="Projects" action="project_management_project_action" parent="project_management_main_menu"/>
+
+<!-- Task Form View -->
+        <record id="project_management_task_form_view" model="ir.ui.view">
+            <field name="name">project.management.task.form.view</field>
+            <field name="model">project.management.task</field>
+            <field name="arch" type="xml">
+                <form string="Task">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="description"/>
+                                <field name="planned_hours"/>
+                                <field name="competency_ids" widget="many2many_tags"/>
+                                <field name="min_start_date"/>
+                                <field name="max_start_date"/>
+                                <field name="min_end_date"/>
+                                <field name="max_end_date"/>
+                            </group>
+                            <group>
+                                <field name="actual_hours"/>
+                                <!-- end of added field -->
+                                <field name="actual_start_date"/>
+                                <field name="actual_end_date"/>
+                                <field name="predecessor_ids" widget="many2many_tags"/>
+                                <field name="product_ids" widget="many2many_tags"/>
+                                <field name="project_id"/>
+                                <field name="employee_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Task Tree View -->
+        <record id="project_management_task_tree_view" model="ir.ui.view">
+            <field name="name">project.management.task.tree.view</field>
+            <field name="model">project.management.task</field>
+            <field name="arch" type="xml">
+                <tree string="Tasks">
+                    <field name="name"/>
+                    <field name="description"/>
+                    <field name="planned_hours"/>
+                    <field name="competency_ids" widget="many2many_tags"/>
+                    <field name="min_start_date"/>
+                    <field name="max_start_date"/>
+                    <field name="min_end_date"/>
+                    <field name="max_end_date"/>
+ <!-- added this field -->
+                    <field name="actual_hours"/>
+                                <!-- end of added field -->
+                    <field name="actual_start_date"/>
+                    <field name="actual_end_date"/>
+                    <field name="predecessor_ids" widget="many2many_tags"/>
+                    <field name="product_ids" widget="many2many_tags"/>
+                    <field name="project_id"/>
+                    <field name="employee_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Task Action -->
+        <record id="project_management_task_action" model="ir.actions.act_window">
+            <field name="name">Tasks</field>
+            <field name="res_model">project.management.task</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new task
+                </p><p>
+                    A task is a unit of work that requires a certain amount of time and skills to complete.
+                </p>
+            </field>
+        </record>
+
+ <!-- Task Menu -->
+        <menuitem id="project_management_task_menu" name="Tasks" action="project_management_task_action" parent="project_management_main_menu"/>
+
+        <!-- Product Form View -->
+        <record id="project_management_product_form_view" model="ir.ui.view">
+            <field name="name">project.management.product.form.view</field>
+            <field name="model">project.management.product</field>
+            <field name="arch" type="xml">
+                <form string="Product">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="author_ids" widget="many2many_tags"/>
+                                <field name="task_ids" widget="many2many_tags"/>
+                                <field name="parent_id"/>
+                            </group>
+                            <group>
+                                <field name="child_ids" widget="many2many_tags"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Product Tree View -->
+        <record id="project_management_product_tree_view" model="ir.ui.view">
+            <field name="name">project.management.product.tree.view</field>
+            <field name="model">project.management.product</field>
+            <field name="arch" type="xml">
+                <tree string="Products">
+                    <field name="name"/>
+                    <field name="author_ids" widget="many2many_tags"/>
+                    <field name="task_ids" widget="many2many_tags"/>
+                    <field name="parent_id"/>
+                    <field name="child_ids" widget="many2many_tags"/>
+                </tree>
+            </field>
+        </record>
+
+ <!-- Product Action -->
+        <record id="project_management_product_action" model="ir.actions.act_window">
+            <field name="name">Products</field>
+            <field name="res_model">project.management.product</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new product
+                </p><p>
+                    A product is a deliverable that is created as a result of one or more tasks.
+                </p>
+            </field>
+        </record>
+
+        <!-- Product Menu -->
+        <menuitem id="project_management_product_menu" name="Products" action="project_management_product_action" parent="project_management_main_menu"/>
+
+        <!-- Competency Form View -->
+        <record id="project_management_competency_form_view" model="ir.ui.view">
+            <field name="name">project.management.competency.form.view</field>
+            <field name="model">project.management.competency</field>
+            <field name="arch" type="xml">
+                <form string="Competency">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Competency Tree View -->
+        <record id="project_management_competency_tree_view" model="ir.ui.view">
+            <field name="name">project.management.competency.tree.view</field>
+            <field name="model">project.management.competency</field>
+            <field name="arch" type="xml">
+                <tree string="Competencies">
+                    <field name="name"/>
+                </tree>
+            </field>
+        </record>
+
+<!-- Competency Action -->
+        <record id="project_management_competency_action" model="ir.actions.act_window">
+            <field name="name">Competencies</field>
+            <field name="res_model">project.management.competency</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new competency
+                </p><p>
+                    A competency is a skill or knowledge that is required or desired for a task or a position.
+                </p>
+            </field>
+        </record>
+
+        <!-- Competency Menu -->
+        <menuitem id="project_management_competency_menu" name="Competencies" action="project_management_competency_action" parent="project_management_main_menu"/>
+
+        <!-- Calendar Form View -->
+        <record id="project_management_calendar_form_view" model="ir.ui.view">
+            <field name="name">project.management.calendar.form.view</field>
+            <field name="model">project.management.calendar</field>
+            <field name="arch" type="xml">
+                <form string="Calendar">
+                    <sheet>
+                        <div class="oe_title">
+                            <h1>
+                                <field name="name"/>
+                            </h1>
+                        </div>
+                        <group>
+                            <group>
+                                <field name="date_from"/>
+                                <field name="date_to"/>
+                                <field name="employee_id"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+  <!-- Calendar Tree View -->
+        <record id="project_management_calendar_tree_view" model="ir.ui.view">
+            <field name="name">project.management.calendar.tree.view</field>
+            <field name="model">project.management.calendar</field>
+            <field name="arch" type="xml">
+                <tree string="Calendars">
+                    <field name="name"/>
+                    <field name="date_from"/>
+                    <field name="date_to"/>
+                    <field name="employee_id"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Calendar Action -->
+        <record id="project_management_calendar_action" model="ir.actions.act_window">
+            <field name="name">Calendars</field>
+            <field name="res_model">project.management.calendar</field>
+            <field name="view_mode">tree,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create a new calendar
+                </p><p>
+                    A calendar is a period of time when an employee is available or unavailable for work.
+                </p>
+            </field>
+        </record>
+
+        <!-- Calendar Menu -->
+        <menuitem id="project_management_calendar_menu" name="Calendars" action="project_management_calendar_action" parent="project_management_main_menu"/>
+
+
+    </data>
+</odoo>

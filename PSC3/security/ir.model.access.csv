@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_project1,access_project1,model_project_management_calendar,base.group_user,1,1,1,1
+access_project2,access_project2,model_project_management_competency,base.group_user,1,1,1,1
+access_project3,access_project3,model_project_management_department,base.group_user,1,1,1,1
+access_project4,access_project4,model_project_management_employee,base.group_user,1,1,1,1
+access_project5,access_project5,model_project_management_product,base.group_user,1,1,1,1
+access_project6,access_project6,model_project_management_project,base.group_user,1,1,1,1
+access_project7,access_project7,model_project_management_task,base.group_user,1,1,1,1
