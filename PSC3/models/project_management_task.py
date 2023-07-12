@@ -26,9 +26,11 @@ class ProjectManagementTask(models.Model):
     @api.depends('actual_start_date')
     def _compute_actual_hours(self):
         for task in self:
-            if task.actual_start_date:
+            if task.actual_end_date:
+                delta = task.actual_end_date - task.actual_start_date
+                task.actual_hours = delta.days * 24  # assuming 24 hours per day
+            else:
                 today = datetime.today().date()
                 delta = today - task.actual_start_date
-                task.actual_hours = delta.days * 24 # assuming 24 hours per day
-            else:
-                task.actual_hours = 0
+                task.actual_hours = delta.days * 24  # assuming 24 hours per day
+            

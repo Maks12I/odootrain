@@ -8,7 +8,7 @@ class ProjectManagementEmployee(models.Model):
 
     name = fields.Char(string='Name', required=True)
     code = fields.Char(string='Code', required=True)
-    department_id = fields.Many2one('project.management.department', string='Department', required=True)
+    department_id = fields.Many2one('project.management.department', string='Department')
     position = fields.Char(string='Position', required=True)
     competency_ids = fields.Many2many('project.management.competency', string='Competencies')
     availability_calendar_id = fields.Many2one('project.management.calendar', string='Availability Calendar')
